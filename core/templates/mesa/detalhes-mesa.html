@@ -1,0 +1,66 @@
+{% extends "core/base_view.html" %}
+{% block content %}
+{% load static %}
+    <div class="container">
+        <!-- body -->
+        {% for mesa in mesa %}
+        <div class="row detalhe-mesa">
+            <div class="col-md-12">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Mesa #{{ forloop.counter }}</h1>
+                        <h6 class="lead">Atendente: {{ mesa.Funcionario.nome }} </h6>
+                        <h6 class="lead">Cliente: {{ mesa.Cliente.nome }} </h6>
+                        <hr class="my-4">
+                        <h5>Pedidos</h5>
+                        <table class="table table-dark table-hover table-bordered">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">COD.</th>
+                                    <th scope="col">NOME</th>
+                                    <th scope="col">PREÇO</th>
+                                    <th scope="col">PRODUTO</th>
+                                    <th scope="col">CRIADO EM</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for produto in mesa.Produto_Pub.all %}
+                                <tr>
+                                    <th scope="row">
+                                        <a href="">#{{ produto.id }}</a>
+                                    </th>
+                                    <td>{{ produto.nome }}</td>
+                                    <td>{{ produto.preco }}</td>
+                                    <td>{{ produto.produto }}</td>
+                                    <td>{{ produto.create_at }}</td>
+                                </tr>
+                                {% endfor %}
+                                {% for produto in mesa.Produto_Hookah.all %}
+                                <tr>
+                                    <th scope="row">
+                                        <a href="">#{{ produto.id }}</a>
+                                    </th>
+                                    <td>{{ produto.nome }}</td>
+                                    <td>{{ produto.preco }}</td>
+                                    <td>{{ produto.produto }}</td>
+                                    <td>{{ produto.create_at }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- fim da row -->
+        </div>
+        {% endfor %}
+        <div class="row btn-voltar">
+            <div class="col-6">
+                <a href="{% url 'mesa' %}">
+                    <button class="btn btn-info" type="button">Voltar</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+    </div>
+{% endblock %}

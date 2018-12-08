@@ -1,0 +1,57 @@
+{% extends "core/base_view.html" %}
+{% block content %}
+    <div class="container">
+        <!-- body -->
+        <div class="row btn-cadastrar">
+            <div class="col-md-12" align="right">
+                <a href="{% url 'cadastrar_funcionario' %}">
+                    <button class="btn btn-dark" type="button">Cadastrar Funcionário</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row label-title">
+            <div class="col-md-12">
+                <h3>Funcionários</h3>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row tabela" align="center">
+            <div class="col-md-12">
+                <table class="table table-dark table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">COD.</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">FUNÇÃO</th>
+                            <th scope="col">CRIADO EM</th>
+                            <th scope="col">MODIFICADO EM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for funcionario in funcionarios %}
+                        <tr>
+                            <th scope="row">
+                                <a href="">#{{ funcionario.id }}</a>
+                            </th>
+                            <td>{{ funcionario.nome }}</td>
+                            <td>{{ funcionario.funcao }}</td>
+                            <td>{{ funcionario.create_at }}</td>
+                            <td>{{ funcionario.update_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row btn-voltar">
+            <div class="col-md-12">
+                <a href="{% url 'mesa' %}">
+                    <button class="btn btn-info" type="button">Voltar</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "core/base_view.html" %}
+{% block content %}
+    <div class="container">
+        <!-- body -->
+        <div class="row btn-cadastrar">
+            <div class="col-md-12" align="right">
+                <a href="{% url 'cadastrar_cliente' %}">
+                    <button class="btn btn-dark" type="button">Cadastrar Cliente</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row label-title">
+            <div class="col-md-12">
+                <h3>Clientes</h3>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row tabela" align="center">
+            <div class="col-md-12 ">
+                <table class="table table-dark table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">COD.</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">CRIADO EM</th>
+                            <th scope="col">MODIFICADO EM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for cliente in clientes %}
+                        <tr>
+                            <th scope="row">
+                                <a href="">#{{ cliente.id }}</a>
+                            </th>
+                            <td>{{ cliente.nome }}</td>
+                            <td>{{ cliente.cpf }}</td>
+                            <td>{{ cliente.create_at }}</td>
+                            <td>{{ cliente.update_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row btn-voltar">
+            <div class="col-md-12">
+                <a href="{% url 'mesa' %}">
+                    <button class="btn btn-info" type="button">Voltar</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+    </div>
+{% endblock %}

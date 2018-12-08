@@ -1,0 +1,51 @@
+{% extends "core/base_view.html" %}
+{% block content %}
+{% load static %}
+    <div class="container">
+        <!-- body -->
+        <div class="row btn-cadastrar">
+            <div class="col-md-12" align="right">
+                <a href="{% url 'nova_mesa' %}">
+                    <button class="btn btn-dark" type="button">Nova Mesa</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row label-title">
+            <div class="col-md-12">
+                <h3>Mesas</h3>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <table class="table table-dark table-hover table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">MESA</th>
+                    <th scope="col">ATENDENTE</th>
+                    <th scope="col">CLIENTE</th>
+                    <th scope="col">DETALHES</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for mesa in mesas %}
+                <tr>
+                    <th scope="row">#{{ forloop.counter }}</th>
+                    <td>{{ mesa.Funcionario.nome }}</td>
+                    <td>{{ mesa.Cliente.nome }}</td>
+                    <td>
+                        <a href="{% url 'detalhes_mesa' id=mesa.id%}" class="card-link">Detalhes do pedido</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <div class="row btn-voltar">
+            <div class="col-6">
+                <a href="{% url 'home' %}">
+                    <button class="btn btn-info" type="button">Página inicial</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "core/base_view.html" %}
+{% block content %}
+    <div class="container">
+        <!-- body -->
+        <div class="row btn-cadastrar">
+            <div class="col-md-12" align="right">
+                <a href="{% url 'cadastrar_produto_hookah' %}">
+                    <button class="btn btn-dark" type="button">Cadastrar Produto</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row label-title">
+            <div class="col-md-12">
+                <h3>Produtos Hookah</h3>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row tabela" align="center">
+            <div class="col-md-12">
+                <table class="table table-dark table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">COD.</th>
+                            <th scope="col">NOME</th>
+                            <th scope="col">PREÇO</th>
+                            <th scope="col">PRODUTO</th>
+                            <th scope="col">CRIADO EM</th>
+                            <th scope="col">MODIFICADO EM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                        <tr>
+                            <th scope="row">
+                                <a href="">#{{ produto.id }}</a>
+                            </th>
+                            <td>{{ produto.nome }}</td>
+                            <td>{{ produto.preco }}</td>
+                            <td>{{ produto.produto }}</td>
+                            <td>{{ produto.create_at }}</td>
+                            <td>{{ produto.update_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- fim da row -->
+        </div>
+        <div class="row btn-voltar">
+            <div class="col-md-12">
+                <a href="{% url 'mesa' %}">
+                    <button class="btn btn-info" type="button">Voltar</button>
+                </a>
+            </div>
+            <!-- fim da row -->
+        </div>
+    </div>
+{% endblock %}
